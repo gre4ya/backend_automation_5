@@ -15,6 +15,35 @@ public class TestDBUtil {
     @Test
     public void executeDatabase(){
         List<List<Object>> result = DBUtil.getQueryResultList("select first_name, last_name from employees");
-        System.out.println(result);
+        result.forEach(System.out::println);
+        //System.out.println(result);
+    }
+
+    @Test
+    public void executeDatabase2(){
+
+        List<List<Object>> result = DBUtil.getQueryResultList("select first_name, last_name from employees");
+        for (List<Object> row : result){
+
+        String firstName = row.get(0).toString();
+        String lastName = row.get(1).toString();
+
+        System.out.println(firstName + " " + lastName);
+        }
+    }
+
+    @Test
+    public void executeSingleRow(){
+        String query = "select * from employees where first_name = 'Steven'";
+        List<List<Object>> result = DBUtil.getQueryResultList(query);
+
+        if(!result.isEmpty()) {
+            List<Object> row = result.get(0);
+            for (int i = 0; i < row.size(); i++) {
+                System.out.println(DBUtil.getColumnNames(query).get(i) + ": " + row.get(i));
+            }
+        }
+        else System.out.println("No rows fount in query");
+
     }
 }

@@ -34,6 +34,25 @@ public class DBUtil {
         }
     }
 
+    public static List<String> getColumnNames(String query){
+        List<String> columnNames = new ArrayList<>();
+        try{
+            connection = DriverManager.getConnection(url, username, password);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                String columnName = metaData.getColumnName(i);
+                columnNames.add(columnName);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return columnNames;
+    }
+
     public static List<List<Object>> getQueryResultList(String query){
         executeQuery(query);
         List<List<Object>> rowList = new ArrayList<>();
