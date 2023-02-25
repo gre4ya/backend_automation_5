@@ -1,4 +1,7 @@
 package database;
+import utils.ConfigReader;
+import utils.DBUtil;
+
 import java.sql.*;
 
 public class DatabaseConnection {
