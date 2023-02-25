@@ -34,6 +34,7 @@ public class TestDBUtil {
 
     @Test
     public void executeSingleRow(){
+
         String query = "select * from employees where first_name = 'Steven'";
         List<List<Object>> result = DBUtil.getQueryResultList(query);
 
@@ -44,6 +45,15 @@ public class TestDBUtil {
             }
         }
         else System.out.println("No rows fount in query");
+    }
 
+    @Test
+    public void executeSingleColumn(){
+        List<List<Object>> result = DBUtil.getQueryResultList("select first_name from employees");
+        for (int i = 0; i < result.size(); i++) {
+            for (int j = 0; j < result.get(i).size(); j++) {
+                System.out.println(i + 1 + ". " + result.get(i).get(j));
+            }
+        }
     }
 }
