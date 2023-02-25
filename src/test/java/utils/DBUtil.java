@@ -35,14 +35,43 @@ public class DBUtil {
     }
 
     public static List<List<Object>> getQueryResultList(String query){
-//        List<String> column = new ArrayList<>();
-//        try {
-//            connection = DriverManager.getConnection(url, username, password);
-//            statement = connection.createStatement();
-//            resultSet = statement.executeQuery(query);
-//        }catch(SQLException e){
-//            throw new RuntimeException(e);
-//        }
+        executeQuery(query);
+        List<List<Object>> rowList = new ArrayList<>();
+
+        // we need to find number of columns to stop our loop
+        ResultSetMetaData resultSetMetaData;
+        try {
+
+        // this is giving us a table information
+        resultSetMetaData = resultSet.getMetaData();
+        while(resultSet.next()){
+
+            // create an empty lost for each row
+            List<Object> row = new ArrayList<>();
+
+            // resultSetMetaData.getColumnCount() is giving us the number columns
+            for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
+
+                // we store each column in a list
+                row.add(resultSet.getObject(i));
+            }
+
+            // we get all information amd store it back to list of list
+            rowList.add(row);
+        }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return rowList;
     }
+
+    public static Object getCellValue(String query){
+        /**
+        if we have only one value for the query we use this method because we don't need list of list
+         */
+        return getQueryResultList(query).get(0).get(0);
+    }
+
+
 
 }
