@@ -14,14 +14,12 @@ public class DatabaseSteps {
     @Given("user is able to connect to the database")
     public void user_is_able_to_connect_to_the_database() {
         DBUtil.createDBConnection();
-
     }
 
     @When("user send {string} to the database")
     public void user_send_to_the_database(String query) {
         mainQuery = query;
         DBUtil.executeQuery(query);
-
     }
 
     @Then("Validate the {int}")
