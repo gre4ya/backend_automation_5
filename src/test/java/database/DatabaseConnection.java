@@ -23,9 +23,7 @@ public class DatabaseConnection {
 
         System.out.println("Database connection successfully");
 
-        /**
-         * Statement keeps the connection between DB and Automation
-         * to send queries*/
+        /** Statement keeps the connection between DB and Automation to send queries */
 
         Statement statement = connection.createStatement();
 
@@ -35,7 +33,8 @@ public class DatabaseConnection {
 
         /**
          * ResultSetMetaData gives the information about the table
-         * You can simply print the column values. We need to call them with iterations*/
+         * You can simply print the column values.
+         * We need to call them with iterations */
 
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 

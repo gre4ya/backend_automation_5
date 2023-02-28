@@ -24,7 +24,6 @@ public class DBUtil {
         }
         return connection;
     }
-
     public static void executeQuery(String query){
         try {
             statement = connection.createStatement();
@@ -33,7 +32,6 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
-
     public static List<String> getColumnNames(String query){
         List<String> columnNames = new ArrayList<>();
         try{
@@ -52,7 +50,6 @@ public class DBUtil {
         }
         return columnNames;
     }
-
     public static List<List<Object>> getQueryResultList(String query){
         executeQuery(query);
         List<List<Object>> rowList = new ArrayList<>();
@@ -65,7 +62,7 @@ public class DBUtil {
         resultSetMetaData = resultSet.getMetaData();
         while(resultSet.next()){
 
-            // create an empty lost for each row
+            // create an empty list for each row
             List<Object> row = new ArrayList<>();
 
             // resultSetMetaData.getColumnCount() is giving us the number columns
@@ -83,14 +80,8 @@ public class DBUtil {
         }
         return rowList;
     }
-
     public static Object getCellValue(String query){
-        /**
-        if we have only one value for the query we use this method because we don't need list of list
-         */
+        /** if we have only one value for the query we use this method because we don't need list of list */
         return getQueryResultList(query).get(0).get(0);
     }
-
-
-
 }
