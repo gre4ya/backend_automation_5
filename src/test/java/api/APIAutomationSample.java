@@ -17,6 +17,7 @@ public class APIAutomationSample {
         Response response;
 
         /** Creating POST call to create the specific user*/
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
@@ -35,6 +36,7 @@ public class APIAutomationSample {
         int postId = response.jsonPath().getInt("id");
 
         /** Creating GET call to retrieve the specific user */
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
@@ -43,6 +45,7 @@ public class APIAutomationSample {
                 .then().log().all().extract().response();
 
         /** Creating GET call to retrieve All users */
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
@@ -51,6 +54,7 @@ public class APIAutomationSample {
                 .then().log().all().extract().response();
 
         /** Creating PUT call to update the specific user */
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
@@ -63,6 +67,7 @@ public class APIAutomationSample {
                 .then().log().all().extract().response();
 
         /** Creating PATCH call to update specific field of the specific user */
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
@@ -79,6 +84,7 @@ public class APIAutomationSample {
         Assert.assertEquals(postId, patchId, "Expected id " + postId + " we found " + patchId);
 
         /** Creating DELETE call to delete specific user */
+
         response = RestAssured
                 .given().log().all()
                 .header("Content-Type", "application/json")
