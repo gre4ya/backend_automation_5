@@ -91,6 +91,5 @@ public class APIAutomationSample {
                 .header("Authorization","Bearer cd6f43f79e931dc381c5c228f3e80c9f6990ec23e970e0325e206b9d241e551e")
                 .when().delete("https://gorest.co.in/public/v2/users/" + postId)
                 .then().log().all().extract().response();
-
     }
 }
