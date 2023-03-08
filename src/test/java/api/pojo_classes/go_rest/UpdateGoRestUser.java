@@ -1,4 +1,4 @@
-package api.tdd;
+package api.pojo_classes.go_rest;
 
 public class UpdateGoRestUser {
 

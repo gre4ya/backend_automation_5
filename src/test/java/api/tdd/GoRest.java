@@ -1,6 +1,7 @@
 package api.tdd;
 
 import api.pojo_classes.go_rest.CreateGoRestUser;
+import api.pojo_classes.go_rest.UpdateGoRestUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
@@ -17,7 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class GoRest {
 
-    Response response;
+    static Response response;
     /**
      ObjectMapper is a Class which is coming from fasterxml to convert Java class to JSON
      */
@@ -109,11 +110,11 @@ public class GoRest {
         // exp_gender = createGoRestUser.getGender();
         // exp_status = createGoRestUser.getStatus();
 
-        Assert.assertEquals(response.jsonPath().getInt("id"), expected_user_id);
-        Assert.assertEquals(response.jsonPath().getString("name"), exp_name);
-        Assert.assertEquals(response.jsonPath().getString("email"), updateGoRestUser.getEmail());
-        Assert.assertEquals(response.jsonPath().getString("gender"), createGoRestUser.getGender());
-        Assert.assertEquals(response.jsonPath().getString("status"), createGoRestUser.getStatus());
+        Assert.assertEquals(getAttributeValueInt("id"), expected_user_id);
+        Assert.assertEquals(getAttributeValueString("name"), exp_name);
+        Assert.assertEquals(getAttributeValueString("email"), updateGoRestUser.getEmail());
+        Assert.assertEquals(getAttributeValueString("gender"), createGoRestUser.getGender());
+        Assert.assertEquals(getAttributeValueString("status"), createGoRestUser.getStatus());
 
 
 
@@ -130,4 +131,8 @@ public class GoRest {
                 .extract().response();
 
     }
+
+    public static String getAttributeValueString(String attribute){return response.jsonPath().getString(attribute);}
+    public static int getAttributeValueInt(String attribute){return response.jsonPath().getInt(attribute);}
+
 }
