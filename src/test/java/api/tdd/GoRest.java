@@ -8,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
@@ -24,7 +25,12 @@ public class GoRest {
     ObjectMapper objectMapper = new ObjectMapper();
     Faker faker = new Faker();
 
-    int user_id;
+    int expected_user_id;
+
+    String exp_name;
+    String exp_email;
+    String exp_gender;
+    String exp_status;
 
     @BeforeTest
     public void beforeTest(){
@@ -65,13 +71,13 @@ public class GoRest {
 
         System.out.println("--------------GET a specific user---------------");
 
-        user_id = response.jsonPath().getInt("id");
+        expected_user_id = response.jsonPath().getInt("id");
 
         response = RestAssured
                 .given().log().all()
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
-                .when().get( "/public/v2/users/" + user_id)
+                .when().get( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(200)
                 .time(Matchers.lessThan(2000L))
@@ -90,7 +96,7 @@ public class GoRest {
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(updateGoRestUser))
-                .when().put( "/public/v2/users/" + user_id)
+                .when().put( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(200)
                 .time(Matchers.lessThan(4000L))
@@ -98,13 +104,26 @@ public class GoRest {
                 .contentType(ContentType.JSON)
                 .extract().response();
 
+        exp_name = updateGoRestUser.getName();
+        // exp_email = updateGoRestUser.getEmail();
+        // exp_gender = createGoRestUser.getGender();
+        // exp_status = createGoRestUser.getStatus();
+
+        Assert.assertEquals(response.jsonPath().getInt("id"), expected_user_id);
+        Assert.assertEquals(response.jsonPath().getString("name"), exp_name);
+        Assert.assertEquals(response.jsonPath().getString("email"), updateGoRestUser.getEmail());
+        Assert.assertEquals(response.jsonPath().getString("gender"), createGoRestUser.getGender());
+        Assert.assertEquals(response.jsonPath().getString("status"), createGoRestUser.getStatus());
+
+
+
         System.out.println("--------------DELETE user---------------");
 
         response = RestAssured
                 .given().log().all()
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
-                .when().delete( "/public/v2/users/" + user_id)
+                .when().delete( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(204)
                 .time(Matchers.lessThan(4000L))
