@@ -20,10 +20,10 @@ public class CreateGoRestUserWithLombok {
      }
      */
 
-    private String name;
-    private String gender;
-    private String email;
-    private String status;
+     String name;
+     String gender;
+     String email;
+     String status;
 
 
 

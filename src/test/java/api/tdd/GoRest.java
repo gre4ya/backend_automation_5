@@ -19,9 +19,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class GoRest {
 
     static Response response;
-    /**
-     ObjectMapper is a Class which is coming from fasterxml to convert Java class to JSON
-     */
+    /** ObjectMapper is a Class which is coming from fasterxml(Jackson) to convert Java class to JSON */
 
     ObjectMapper objectMapper = new ObjectMapper();
     Faker faker = new Faker();
@@ -41,7 +39,8 @@ public class GoRest {
 
     @Test
     public void goRestCRUD() throws JsonProcessingException {
-        //Creating a POJO (Bean) object
+
+        //Creating a POJO (Bean - when encapsulated) object
         CreateGoRestUser createGoRestUser = new CreateGoRestUser();
 
         // assigning the values to the attributes
@@ -116,8 +115,6 @@ public class GoRest {
         Assert.assertEquals(getAttributeValueString("gender"), createGoRestUser.getGender());
         Assert.assertEquals(getAttributeValueString("status"), createGoRestUser.getStatus());
 
-
-
         System.out.println("--------------DELETE user---------------");
 
         response = RestAssured
@@ -129,10 +126,8 @@ public class GoRest {
                 .assertThat().statusCode(204)
                 .time(Matchers.lessThan(4000L))
                 .extract().response();
-
     }
 
     public static String getAttributeValueString(String attribute){return response.jsonPath().getString(attribute);}
     public static int getAttributeValueInt(String attribute){return response.jsonPath().getInt(attribute);}
-
 }
