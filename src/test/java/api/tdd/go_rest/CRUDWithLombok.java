@@ -41,7 +41,9 @@ public class CRUDWithLombok {
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(createUser)
                 .when().post( "/public/v2/users/")
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(201)
+                .extract().response();
 
         user_id = response.jsonPath().getInt("id");
 
@@ -52,7 +54,9 @@ public class CRUDWithLombok {
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .when().get( "/public/v2/users/" + user_id)
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(200)
+                .extract().response();
 
         /** -----------------------GET-ALL-----------------------*/
 
@@ -61,7 +65,9 @@ public class CRUDWithLombok {
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .when().get( "/public/v2/users")
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(200)
+                .extract().response();
 
         /** -----------------------PUT-----------------------*/
 
@@ -74,7 +80,9 @@ public class CRUDWithLombok {
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(createUser)
                 .when().put( "/public/v2/users/" + user_id)
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(200)
+                .extract().response();
 
         UpdateUserWithLombok updateUserWithLombok = UpdateUserWithLombok
                 .builder()
@@ -89,7 +97,9 @@ public class CRUDWithLombok {
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(updateUserWithLombok)
                 .when().put( "/public/v2/users/" + user_id)
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(200)
+                .extract().response();
 
         /** -----------------------PATCH-----------------------*/
 
@@ -101,7 +111,9 @@ public class CRUDWithLombok {
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(createUser)
                 .when().put( "/public/v2/users/" + user_id)
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(200)
+                .extract().response();
 
         /** -----------------------DELETE-----------------------*/
 
@@ -110,7 +122,9 @@ public class CRUDWithLombok {
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .when().delete( "/public/v2/users/" + user_id)
-                .then().log().all().extract().response();
+                .then().log().all()
+                .and().statusCode(204)
+                .extract().response();
 
     }
 

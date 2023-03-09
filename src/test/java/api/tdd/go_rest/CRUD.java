@@ -49,7 +49,7 @@ public class CRUD {
         createUser.setEmail(faker.internet().emailAddress());
         createUser.setStatus("active");
 
-        System.out.println("--------------POST a user---------------");
+        System.out.println("--------------POST---------------");
 
         response = RestAssured
                 .given().log().all()
@@ -69,7 +69,7 @@ public class CRUD {
                 .contentType(ContentType.JSON)
                 .extract().response();
 
-        System.out.println("--------------GET a specific user---------------");
+        System.out.println("--------------GET-a-user---------------");
 
         expected_user_id = response.jsonPath().getInt("id");
 
@@ -85,7 +85,7 @@ public class CRUD {
                 .contentType(ContentType.JSON)
                 .extract().response();
 
-        System.out.println("--------------Updating a user with PUT---------------");
+        System.out.println("--------------PUT---------------");
 
         UpdateUser updateUser = new UpdateUser();
         updateUser.setName("Myhailo Kobza");
@@ -115,7 +115,7 @@ public class CRUD {
         Assert.assertEquals(getAttributeValueString("gender"), createUser.getGender());
         Assert.assertEquals(getAttributeValueString("status"), createUser.getStatus());
 
-        System.out.println("--------------DELETE user---------------");
+        System.out.println("--------------DELETE-user---------------");
 
         response = RestAssured
                 .given().log().all()
