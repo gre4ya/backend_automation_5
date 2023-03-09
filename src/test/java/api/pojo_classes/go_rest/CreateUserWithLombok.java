@@ -9,7 +9,7 @@ import lombok.Data;
 /**  With @Builder we can assign value to the attribute */
 @Builder
 
-public class CreateGoRestUserWithLombok {
+public class CreateUserWithLombok {
 
     /**
      {

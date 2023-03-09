@@ -1,6 +1,7 @@
-package api.tdd;
+package api.tdd.go_rest;
 
-import api.pojo_classes.go_rest.CreateGoRestUserWithLombok;
+import api.pojo_classes.go_rest.CreateUserWithLombok;
+import api.pojo_classes.go_rest.UpdateUserWithLombok;
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -9,7 +10,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
 
-public class GoRestWithLombok {
+public class CRUDWithLombok {
 
     static Response response;
     Faker faker = new Faker();
@@ -24,7 +25,7 @@ public class GoRestWithLombok {
     @Test
     public void goRestCRUDWithLombok(){
 
-        CreateGoRestUserWithLombok createUser = CreateGoRestUserWithLombok
+        CreateUserWithLombok createUser = CreateUserWithLombok
                 .builder()
                 .name("Taras Shevchenko")
                 .email(faker.internet().emailAddress())
@@ -72,6 +73,21 @@ public class GoRestWithLombok {
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
                 .body(createUser)
+                .when().put( "/public/v2/users/" + user_id)
+                .then().log().all().extract().response();
+
+        UpdateUserWithLombok updateUserWithLombok = UpdateUserWithLombok
+                .builder()
+                .email(faker.internet().emailAddress())
+                .gender("female")
+                .status("inactive")
+                .build();
+
+        response = RestAssured
+                .given().log().all()
+                .contentType(ContentType.JSON)
+                .header("Authorization", ConfigReader.getProperty("GoRestToken"))
+                .body(updateUserWithLombok)
                 .when().put( "/public/v2/users/" + user_id)
                 .then().log().all().extract().response();
 

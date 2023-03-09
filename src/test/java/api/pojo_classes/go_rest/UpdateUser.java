@@ -1,6 +1,6 @@
 package api.pojo_classes.go_rest;
 
-public class UpdateGoRestUser {
+public class UpdateUser {
 
     private String name;
     private String email;

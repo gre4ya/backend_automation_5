@@ -1,7 +1,7 @@
-package api.tdd;
+package api.tdd.go_rest;
 
-import api.pojo_classes.go_rest.CreateGoRestUser;
-import api.pojo_classes.go_rest.UpdateGoRestUser;
+import api.pojo_classes.go_rest.CreateUser;
+import api.pojo_classes.go_rest.UpdateUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
@@ -16,7 +16,7 @@ import utils.ConfigReader;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class GoRest {
+public class CRUD {
 
     static Response response;
     /** ObjectMapper is a Class which is coming from fasterxml(Jackson) to convert Java class to JSON */
@@ -41,13 +41,13 @@ public class GoRest {
     public void goRestCRUD() throws JsonProcessingException {
 
         //Creating a POJO (Bean - when encapsulated) object
-        CreateGoRestUser createGoRestUser = new CreateGoRestUser();
+        CreateUser createUser = new CreateUser();
 
         // assigning the values to the attributes
-        createGoRestUser.setName("Oksana Pukach");
-        createGoRestUser.setGender("female");
-        createGoRestUser.setEmail(faker.internet().emailAddress());
-        createGoRestUser.setStatus("active");
+        createUser.setName("Oksana Pukach");
+        createUser.setGender("female");
+        createUser.setEmail(faker.internet().emailAddress());
+        createUser.setStatus("active");
 
         System.out.println("--------------POST a user---------------");
 
@@ -56,7 +56,7 @@ public class GoRest {
                 //.header("Content-Type", "application/json")
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
-                .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createGoRestUser))
+                .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createUser))
                 .when().post( "/public/v2/users/")
                 .then().log().all()
                 // validating the status code with rest assured
@@ -87,15 +87,15 @@ public class GoRest {
 
         System.out.println("--------------Updating a user with PUT---------------");
 
-        UpdateGoRestUser updateGoRestUser = new UpdateGoRestUser();
-        updateGoRestUser.setName("Myhailo Kobza");
-        updateGoRestUser.setEmail(faker.internet().emailAddress());
+        UpdateUser updateUser = new UpdateUser();
+        updateUser.setName("Myhailo Kobza");
+        updateUser.setEmail(faker.internet().emailAddress());
 
         response = RestAssured
                 .given().log().all()
                 .contentType(ContentType.JSON)
                 .header("Authorization", ConfigReader.getProperty("GoRestToken"))
-                .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(updateGoRestUser))
+                .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(updateUser))
                 .when().put( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(200)
@@ -104,16 +104,16 @@ public class GoRest {
                 .contentType(ContentType.JSON)
                 .extract().response();
 
-        exp_name = updateGoRestUser.getName();
+        exp_name = updateUser.getName();
         // exp_email = updateGoRestUser.getEmail();
         // exp_gender = createGoRestUser.getGender();
         // exp_status = createGoRestUser.getStatus();
 
         Assert.assertEquals(getAttributeValueInt("id"), expected_user_id);
         Assert.assertEquals(getAttributeValueString("name"), exp_name);
-        Assert.assertEquals(getAttributeValueString("email"), updateGoRestUser.getEmail());
-        Assert.assertEquals(getAttributeValueString("gender"), createGoRestUser.getGender());
-        Assert.assertEquals(getAttributeValueString("status"), createGoRestUser.getStatus());
+        Assert.assertEquals(getAttributeValueString("email"), updateUser.getEmail());
+        Assert.assertEquals(getAttributeValueString("gender"), createUser.getGender());
+        Assert.assertEquals(getAttributeValueString("status"), createUser.getStatus());
 
         System.out.println("--------------DELETE user---------------");
 
