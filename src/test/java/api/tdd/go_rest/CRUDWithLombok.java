@@ -73,7 +73,7 @@ public class CRUDWithLombok {
 
         assertThat(
                 // reason why we are asserting
-                "I am checking if the expected value is matching with the actual one",
+                "Checking if the expected value is matching with the actual one",
                 //actual value
                 actual_name,
                 //expected value

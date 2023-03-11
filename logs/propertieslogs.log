@@ -9,3 +9,14 @@
 [DEBUG] 2023-03-11 13:50:37.319 [main] CRUDWithLombok - The actual pet_id is 178 but we fount 178
 [INFO ] 2023-03-11 13:59:13.614 [main] CRUDWithLombok - Starting the test suite
 [DEBUG] 2023-03-11 13:59:23.088 [main] CRUDWithLombok - The expected name is Taras Shevchenko but we fount Taras Shevchenko
+[INFO ] 2023-03-11 14:05:16.656 [main] CRUDWithLombok - Starting the test suite
+[DEBUG] 2023-03-11 14:05:26.281 [main] CRUDWithLombok - The expected name should be Taras Shevchenko and we fount Taras Shevchenko
+[DEBUG] 2023-03-11 14:37:54.043 [main] CRUDWithLombok - The expected status should be active and we fount active
+[DEBUG] 2023-03-11 14:40:42.350 [main] CRUDWithLombok - The expected status should be active and we fount active
+[DEBUG] 2023-03-11 14:41:34.142 [main] CRUDWithLombok - The expected status should be active and we fount active
+[INFO ] 2023-03-11 15:24:12.115 [main] ReadingFromExcelFile - First name from the first cell is Tech Global
+[INFO ] 2023-03-11 15:27:39.922 [main] ReadingFromExcelFile - First name from the first cell is Tech Global
+[INFO ] 2023-03-11 15:27:39.929 [main] ReadingFromExcelFile - Second id value is 2
+[INFO ] 2023-03-11 15:30:09.084 [main] ReadingFromExcelFile - First name from the first cell is Tech Global
+[INFO ] 2023-03-11 15:30:09.088 [main] ReadingFromExcelFile - Second id value is 2
+[INFO ] 2023-03-11 15:30:09.089 [main] ReadingFromExcelFile - The last row number is 2

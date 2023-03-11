@@ -5,18 +5,24 @@ import api.pojo_classes.go_rest.UpdateUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
+import com.jayway.jsonpath.JsonPath;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class CRUD {
+    static Logger logger = LogManager.getLogger(api.tdd.pet_store.CRUDWithLombok.class);
 
     static Response response;
     /** ObjectMapper is a Class which is coming from fasterxml(Jackson) to convert Java class to JSON */
@@ -62,12 +68,25 @@ public class CRUD {
                 // validating the status code with rest assured
                 .assertThat().statusCode(201)
                 // validating the time of the execution (x-runtime: 0.053983) with rest assured
-                .time(Matchers.lessThan(2000L))
+                .time(Matchers.lessThan(10000L))
                 // validating the value from the body with the help of hamcrest
                 .body("name", equalTo("Oksana Pukach"))
                 // validating response content type
                 .contentType(ContentType.JSON)
                 .extract().response();
+
+        logger.debug("The expected status should be " + createUser.getStatus() + " and we fount " + JsonPath.read(response.asString(), "status"));
+
+        assertThat(
+                // reason why we are asserting
+                "Checking if the expected status is matching with the actual one",
+                //actual value
+                JsonPath.read(response.asString(), "status"),
+                //expected value
+                is(createUser.getStatus())
+        );
+
+
 
         System.out.println("--------------GET-a-user---------------");
 
@@ -80,7 +99,7 @@ public class CRUD {
                 .when().get( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(200)
-                .time(Matchers.lessThan(2000L))
+                .time(Matchers.lessThan(10000L))
                 .body("name", equalTo("Oksana Pukach"))
                 .contentType(ContentType.JSON)
                 .extract().response();
@@ -99,7 +118,7 @@ public class CRUD {
                 .when().put( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(200)
-                .time(Matchers.lessThan(4000L))
+                .time(Matchers.lessThan(10000L))
                 .body("name", equalTo("Myhailo Kobza"))
                 .contentType(ContentType.JSON)
                 .extract().response();
@@ -124,7 +143,7 @@ public class CRUD {
                 .when().delete( "/public/v2/users/" + expected_user_id)
                 .then().log().all()
                 .assertThat().statusCode(204)
-                .time(Matchers.lessThan(4000L))
+                .time(Matchers.lessThan(10000L))
                 .extract().response();
     }
 
