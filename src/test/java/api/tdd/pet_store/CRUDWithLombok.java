@@ -57,6 +57,7 @@ public class CRUDWithLombok {
         response = RestAssured
                 .given().log().all()
                 .contentType(ContentType.JSON)
+
                 .body(addPet)
                 .when().post("/v2/pet")
                 .then().log().all()
@@ -82,13 +83,13 @@ public class CRUDWithLombok {
         Category update_category = Category
                 .builder()
                 .id(11)
+                .name("MA")
                 .build();
 
         UpdateAPet updatePet = UpdateAPet
                 .builder()
                 .id(178)
                 .category(update_category)
-                .name("MK")
                 .photoUrls(Arrays.asList("Monkey's Photo URL"))
                 .tags(Arrays.asList(tag0, tag1))
                 .status("unavailable")
