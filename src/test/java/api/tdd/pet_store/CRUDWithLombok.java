@@ -5,19 +5,31 @@ import api.pojo_classes.pet_store.AddAPet;
 import api.pojo_classes.pet_store.Tags;
 import api.pojo_classes.pet_store.UpdateAPet;
 import com.github.javafaker.Faker;
+import com.jayway.jsonpath.JsonPath;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
 
 import java.util.Arrays;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+
 public class CRUDWithLombok {
 
+    static Logger logger = LogManager.getLogger(CRUDWithLombok.class);
     Response response;
+    @BeforeSuite
+    public void testStarts(){
+        logger.info("Starting the test suite");
+    }
     @BeforeTest
     public void beforeTest(){
         System.out.println("Starting the API test");
@@ -73,6 +85,27 @@ public class CRUDWithLombok {
         int expected_id = addPet.getId();
         int expectedTag0_id = tag0.getId();
         int expectedTag1_id = tag1.getId();
+
+
+        int actual_idWithJayWay = JsonPath.read(response.asString(), "id");
+        int petTag_idWithJayWay = JsonPath.read(response.asString(), "tags[0].id");
+        logger.info("My actual id with JayWay is " + actual_idWithJayWay);
+        logger.info("My pet tag id with JayWay is " + petTag_idWithJayWay);
+
+        logger.info("Actual pet_id is " + actual_id);
+        logger.debug("The actual pet_id is " + expected_id + " but we fount " + actual_id);
+
+
+        // Assertion with Hamcrest
+
+        assertThat(
+                // reason why we are asserting
+                "I am checking if the expected value is matching with the actual one",
+                //actual value
+                actual_idWithJayWay,
+                //expected value
+                is(expected_id)
+        );
 
         Assert.assertEquals(actual_id, expected_id);
         Assert.assertEquals(actualTag0_id, expectedTag0_id);

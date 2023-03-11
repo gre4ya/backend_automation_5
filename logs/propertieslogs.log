@@ -1,0 +1,11 @@
+[INFO ] 2023-03-11 13:16:42.095 [main] CRUDWithLombok - Starting the test suite
+[INFO ] 2023-03-11 13:28:05.556 [main] CRUDWithLombok - Starting the test suite
+[INFO ] 2023-03-11 13:28:09.483 [main] CRUDWithLombok - Actual pet_id is 178
+[DEBUG] 2023-03-11 13:28:09.483 [main] CRUDWithLombok - The actual pet_id is 178but we fount 178
+[INFO ] 2023-03-11 13:50:33.453 [main] CRUDWithLombok - Starting the test suite
+[INFO ] 2023-03-11 13:50:37.319 [main] CRUDWithLombok - My actual id with JayWay is 178
+[INFO ] 2023-03-11 13:50:37.319 [main] CRUDWithLombok - My pet tag id with JayWay is 45
+[INFO ] 2023-03-11 13:50:37.319 [main] CRUDWithLombok - Actual pet_id is 178
+[DEBUG] 2023-03-11 13:50:37.319 [main] CRUDWithLombok - The actual pet_id is 178 but we fount 178
+[INFO ] 2023-03-11 13:59:13.614 [main] CRUDWithLombok - Starting the test suite
+[DEBUG] 2023-03-11 13:59:23.088 [main] CRUDWithLombok - The expected name is Taras Shevchenko but we fount Taras Shevchenko
