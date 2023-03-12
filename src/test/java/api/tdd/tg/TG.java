@@ -37,7 +37,6 @@ public class TG {
                 .dob(expDOB)
                 .build();
 
-
         response = RestAssured
                 .given().log().all()
                 .contentType(ContentType.JSON)

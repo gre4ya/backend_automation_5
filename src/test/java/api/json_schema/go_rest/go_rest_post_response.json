@@ -17,7 +17,7 @@
       "default": 0,
       "title": "The id Schema",
       "examples": [
-        9887665
+        900541
       ]
     },
     "name": {
@@ -25,7 +25,7 @@
       "default": "",
       "title": "The name Schema",
       "examples": [
-        "{{goRest_Name}}"
+        "Amanda Botsford II"
       ]
     },
     "email": {
@@ -33,7 +33,7 @@
       "default": "",
       "title": "The email Schema",
       "examples": [
-        "{{goRest_Email}}"
+        "Drew.Schaefer@gmail.com"
       ]
     },
     "gender": {
@@ -41,7 +41,7 @@
       "default": "",
       "title": "The gender Schema",
       "examples": [
-        "{{goRest_Gender}}"
+        "male"
       ]
     },
     "status": {
@@ -49,15 +49,15 @@
       "default": "",
       "title": "The status Schema",
       "examples": [
-        "{{goRest_Status}}"
+        "active"
       ]
     }
   },
   "examples": [{
-    "id": 9887665,
-    "name": "{{goRest_Name}}",
-    "email": "{{goRest_Email}}",
-    "gender": "{{goRest_Gender}}",
-    "status": "{{goRest_Status}}"
+    "id": 900541,
+    "name": "Amanda Botsford",
+    "email": "Drew.Schaefer@gmail.com",
+    "gender": "female",
+    "status": "active"
   }]
 }

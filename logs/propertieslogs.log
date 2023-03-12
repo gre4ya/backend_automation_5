@@ -63,3 +63,9 @@
 [INFO ] 2023-03-12 10:32:08.260 [main] CRUDWithLombok - Starting the test suite
 [DEBUG] 2023-03-12 10:32:43.230 [main] CRUDWithLombok - The expected name should be Taras Shevchenko and we fount Taras Shevchenko
 [INFO ] 2023-03-12 10:33:41.792 [main] CRUDWithLombok - Starting the test suite
+[INFO ] 2023-03-12 10:41:38.499 [main] CRUDWithLombok - Starting POST schema validation
+[INFO ] 2023-03-12 10:59:34.223 [main] TG - Beginning of the test
+[DEBUG] 2023-03-12 10:59:36.850 [main] TG - The expected first name is Ciara and we fount Ciara
+[DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected last name is Schneider and we fount Schneider
+[DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected email is CiaraSchneider@gmail.com and we fount CiaraSchneider@gmail.com
+[DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected dob is 1980-09-23 and we fount 1980-09-23

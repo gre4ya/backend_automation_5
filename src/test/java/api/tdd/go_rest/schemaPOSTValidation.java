@@ -1,9 +1,7 @@
 package api.tdd.go_rest;
 
 import api.pojo_classes.go_rest.CreateUserWithLombok;
-import api.pojo_classes.go_rest.UpdateUserWithLombok;
 import com.github.javafaker.Faker;
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -21,7 +19,7 @@ import java.io.FileNotFoundException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class schemaValidation {
+public class schemaPOSTValidation {
     static Logger logger = LogManager.getLogger(api.tdd.pet_store.CRUDWithLombok.class);
 
     static Response response;
