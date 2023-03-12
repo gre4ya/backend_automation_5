@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "name",
+    "email",
+    "gender",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "default": 0,
+      "title": "The id Schema",
+      "examples": [
+        9887665
+      ]
+    },
+    "name": {
+      "type": "string",
+      "default": "",
+      "title": "The name Schema",
+      "examples": [
+        "{{goRest_Name}}"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "default": "",
+      "title": "The email Schema",
+      "examples": [
+        "{{goRest_Email}}"
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "default": "",
+      "title": "The gender Schema",
+      "examples": [
+        "{{goRest_Gender}}"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "default": "",
+      "title": "The status Schema",
+      "examples": [
+        "{{goRest_Status}}"
+      ]
+    }
+  },
+  "examples": [{
+    "id": 9887665,
+    "name": "{{goRest_Name}}",
+    "email": "{{goRest_Email}}",
+    "gender": "{{goRest_Gender}}",
+    "status": "{{goRest_Status}}"
+  }]
+}

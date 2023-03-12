@@ -60,3 +60,6 @@
 [INFO ] 2023-03-12 01:32:40.335 [main] Companies - Sony's number of employees is 108900 people
 [INFO ] 2023-03-12 01:32:40.335 [main] Companies - The last row number is 5
 [INFO ] 2023-03-12 01:32:40.335 [main] Companies - The last cell number is 5
+[INFO ] 2023-03-12 10:32:08.260 [main] CRUDWithLombok - Starting the test suite
+[DEBUG] 2023-03-12 10:32:43.230 [main] CRUDWithLombok - The expected name should be Taras Shevchenko and we fount Taras Shevchenko
+[INFO ] 2023-03-12 10:33:41.792 [main] CRUDWithLombok - Starting the test suite
