@@ -19,14 +19,6 @@ public class TG {
     Faker faker = new Faker();
     Response response;
 
-    /*
-    {
-    "firstName": "{{$randomFirstName}}",
-    "lastName": "{{$randomLastName}}",
-    "email": "{{$randomEmail}}",
-    "dob": "1990-12-14"
-    }
-     */
     @Test
     public void postStudent(){
 
@@ -35,14 +27,14 @@ public class TG {
         String expFirstName = faker.name().firstName();
         String expLastName = faker.name().lastName();
         String expEmail = expFirstName + expLastName + "@gmail.com";
-        String dob = "1980-09-23";
+        String expDOB = "1980-09-23";
 
         PostStudent postStudent = PostStudent
                 .builder()
                 .firstName(expFirstName)
                 .lastName(expLastName)
                 .email(expEmail)
-                .dob(dob)
+                .dob(expDOB)
                 .build();
 
 
@@ -55,13 +47,39 @@ public class TG {
                 .assertThat().statusCode(200)
                 .extract().response();
 
-        int actual_idWithJayWay = JsonPath.read(response.asString(), "id");
-
         String actFirstName = JsonPath.read(response.asString(), "firstName");
         String actLastName = JsonPath.read(response.asString(), "lastName");
         String actEmail = JsonPath.read(response.asString(), "email");
         String actDOB = JsonPath.read(response.asString(), "dob");
-    }
 
+        logger.debug("The expected first name is " + expFirstName + " and we fount " + actFirstName);
+        assertThat(
+                "Checking if the expected first name is matching with the actual one",
+                actFirstName,
+                is(expFirstName)
+        );
+
+        logger.debug("The expected last name is " + expLastName + " and we fount " + actLastName);
+        assertThat(
+                "Checking if the expected last name is matching with the actual one",
+                actLastName,
+                is(expLastName)
+        );
+
+        logger.debug("The expected email is " + expEmail + " and we fount " + actEmail);
+        assertThat(
+                "Checking if the expected email is matching with the actual one",
+                actEmail,
+                is(expEmail)
+        );
+
+        logger.debug("The expected dob is " + expDOB + " and we fount " + actDOB);
+        assertThat(
+                "Checking if the expected dob is matching with the actual one",
+                actDOB,
+                is(expDOB)
+        );
+
+    }
 
 }
