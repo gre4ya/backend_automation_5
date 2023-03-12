@@ -69,3 +69,26 @@
 [DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected last name is Schneider and we fount Schneider
 [DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected email is CiaraSchneider@gmail.com and we fount CiaraSchneider@gmail.com
 [DEBUG] 2023-03-12 10:59:36.853 [main] TG - The expected dob is 1980-09-23 and we fount 1980-09-23
+[INFO ] 2023-03-12 14:30:04.126 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:30:04.957 [main] ExcelUtil - Sheet sheet1was created
+[INFO ] 2023-03-12 14:30:04.957 [main] TestingExcelUtil - File successfully opened
+[INFO ] 2023-03-12 14:31:59.355 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:32:00.217 [main] ExcelUtil - Sheet 'sheet1' was created
+[INFO ] 2023-03-12 14:32:24.739 [main] TestingExcelUtil - Opening the Excel file
+[DEBUG] 2023-03-12 14:32:24.743 [main] ExcelUtil - 'ReadDaa' and 'sheet1' cannot be found
+[INFO ] 2023-03-12 14:39:45.300 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:39:46.169 [main] ExcelUtil - Sheet 'sheet1' was created
+[INFO ] 2023-03-12 14:40:08.970 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:40:09.734 [main] ExcelUtil - Sheet 'sheet1' was created
+[INFO ] 2023-03-12 14:41:49.378 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:41:50.210 [main] ExcelUtil - Sheet 'sheet1' was created
+[INFO ] 2023-03-12 14:41:50.227 [main] TestingExcelUtil - Cell value is 1.0
+[INFO ] 2023-03-12 14:42:12.365 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 14:42:13.104 [main] ExcelUtil - Sheet 'sheet1' was created
+[INFO ] 2023-03-12 14:42:13.125 [main] TestingExcelUtil - Cell value is '1.0'
+[INFO ] 2023-03-12 15:01:36.581 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 15:01:37.439 [main] ExcelUtil - Sheet 'Sheet1' was created
+[INFO ] 2023-03-12 15:03:42.505 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 15:03:43.333 [main] ExcelUtil - Sheet 'Sheet1' was created
+[INFO ] 2023-03-12 15:07:33.591 [main] TestingExcelUtil - Opening the Excel file
+[INFO ] 2023-03-12 15:07:34.403 [main] ExcelUtil - Sheet 'Sheet1' was created
