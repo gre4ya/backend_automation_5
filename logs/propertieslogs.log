@@ -42,3 +42,21 @@
 [DEBUG] 2023-03-11 20:13:58.560 [main] TG - The expected last name is Marvin and we fount Marvin
 [DEBUG] 2023-03-11 20:13:58.560 [main] TG - The expected email is DaronMarvin@gmail.com and we fount DaronMarvin@gmail.com
 [DEBUG] 2023-03-11 20:13:58.560 [main] TG - The expected dob is 1980-09-23 and we fount 1980-09-23
+[INFO ] 2023-03-12 01:20:23.395 [main] Companies - First table header is company id
+[INFO ] 2023-03-12 01:20:23.398 [main] Companies - First company name is Apple
+[INFO ] 2023-03-12 01:20:23.398 [main] Companies - Google's revenue is 257
+[INFO ] 2023-03-12 01:20:23.398 [main] Companies - Sony's number of employees is 108900
+[INFO ] 2023-03-12 01:20:23.398 [main] Companies - The last row number is 5
+[INFO ] 2023-03-12 01:20:23.399 [main] Companies - The last cell number is 5
+[INFO ] 2023-03-12 01:25:03.727 [main] Companies - First table header is 'company id'
+[INFO ] 2023-03-12 01:25:03.731 [main] Companies - First company name is 'Apple'
+[INFO ] 2023-03-12 01:25:03.731 [main] Companies - Google's revenue is $257 billion
+[INFO ] 2023-03-12 01:25:03.731 [main] Companies - Sony's number of employees is 108900 people
+[INFO ] 2023-03-12 01:25:03.731 [main] Companies - The last row number is 5
+[INFO ] 2023-03-12 01:25:03.731 [main] Companies - The last cell number is 5
+[INFO ] 2023-03-12 01:32:40.331 [main] Companies - First table header is 'company id'
+[INFO ] 2023-03-12 01:32:40.334 [main] Companies - First company name is 'Apple'
+[INFO ] 2023-03-12 01:32:40.335 [main] Companies - Google's revenue is $257 billion
+[INFO ] 2023-03-12 01:32:40.335 [main] Companies - Sony's number of employees is 108900 people
+[INFO ] 2023-03-12 01:32:40.335 [main] Companies - The last row number is 5
+[INFO ] 2023-03-12 01:32:40.335 [main] Companies - The last cell number is 5
